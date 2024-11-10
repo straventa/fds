@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7.4.1
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/redis:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    networks:
+      - app_network
+
+  rabbitmq:
+    image: rabbitmq:4.0.2-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./data/rabbitmq/data:/var/lib/rabbitmq
+      - ./data/rabbitmq/logs:/var/log/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      # Add these environment variables to ensure proper initialization
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit feature_flags_file "/var/lib/rabbitmq/feature_flags"
+      - RABBITMQ_CONFIG_FILE=/var/lib/rabbitmq/rabbitmq
+    user: "999:999"  # This ensures proper permissions
+    restart: unless-stopped
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

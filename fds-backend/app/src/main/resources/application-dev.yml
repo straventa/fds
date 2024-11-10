@@ -1,0 +1,294 @@
+server:
+  port: 2001
+spring:
+
+  datasource:
+    #    url: jdbc:oracle:thin:@//8.215.64.144:1521/PDWHDB
+    url: jdbc:oracle:thin:@//172.16.65.21:2230/PDWHDB
+    username: dwh_prod
+    password: 2021deweha
+    user:
+      #      url: jdbc:oracle:thin:@//8.215.64.144:1521/PDWHDB
+      url: jdbc:oracle:thin:@//172.16.65.21:2230/PDWHDB
+      username: dwh_prod
+      password: 2021deweha
+      driver-class-name: oracle.jdbc.OracleDriver
+      ddl-auto: none
+      jpa:
+        database-platform: org.hibernate.dialect.OracleDialect
+      hikari:
+        connection-timeout: 30000
+        maximum-pool-size: 10
+    fds:
+      #      url: jdbc:oracle:thin:@//8.215.64.144:1521/PDWHDB
+      url: jdbc:oracle:thin:@//172.16.65.21:2230/PDWHDB
+      username: dwh_prod
+      password: 2021deweha
+      driver-class-name: oracle.jdbc.OracleDriver
+      ddl-auto: none
+      jpa:
+        database-platform: org.hibernate.dialect.OracleDialect
+      hikari:
+        connection-timeout: 30000
+        maximum-pool-size: 10
+    merchant:
+      #      url: jdbc:oracle:thin:@//8.215.64.144:1521/PDWHDB
+      url: jdbc:oracle:thin:@//172.16.65.21:2230/PDWHDB
+      username: dwh
+      password: deweha202103
+      driver-class-name: oracle.jdbc.OracleDriver
+      ddl-auto: none
+      jpa:
+        database-platform: org.hibernate.dialect.OracleDialect
+      hikari:
+        connection-timeout: 30000
+        maximum-pool-size: 10
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
+  main:
+    allow-circular-references: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        id:
+          new_generator_mappings: true
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: Asia/Jakarta
+  sql:
+    init:
+      mode: never
+      data-locations: classpath:data-local.sql
+  mail:
+    host: "smtp.office365.com"
+    port: 587
+    username: "no-reply@yokke.co.id"
+    password: "YokkeOKPunya!@#"
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          ssl:
+            enable: false
+          auth: true
+  data:
+    redis:
+      port: 6379
+      host: localhost
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 3s
+          max-attempts: 5
+          max-interval: 10s
+          multiplier: 2
+  devtools:
+    livereload:
+      enabled: false
+    restart:
+      enabled: false
+error:
+  handling:
+    http-status-in-json-response: true
+    exception-logging: NO_LOGGING
+    full-stacktrace-http-statuses: 5xx
+    log-levels:
+      5xx: ERROR
+springdoc:
+  pathsToMatch: /fds/api/**
+  api-docs:
+    enabled: true
+    path: /api-docs
+    swagger-ui:
+      path: /swagger-ui.html
+  show-login-endpoint: true
+  show-actuator: true
+jwt:
+  secret: 0F43ED1E6BB04F27D0E17D6C0825C4A55E256F2A17EB61C54FF0CC440047FD969F67C28517F31349CBE25135130062DE443D4C020F060F61E2236CDF274FEF3C
+  access-token-expiration: 1440
+  refresh-token-expiration: 1800
+logging:
+  level:
+    web: debug
+app:
+  base-url: https://172.16.54.49
+  cookie:
+    domain: 172.16.54.49
+    secure: false
+  scheduler: false
+  #  reset-password-url: http:///localhost:3000/reset-password
+  #  setup-password-url: http://localhost:3000/setup-password
+  reset-password-url: https://172.16.54.49/reset-password
+  setup-password-url: https://172.16.54.49/setup-password
+  api:
+    version: 0.0.1
+    server:
+      local:
+        url: http://localhost:2001
+      dev:
+        url: https://172.16.54.49
+      prod:
+        url: https://localhost:2001
+
+
+
+#server:
+#  port: 2001
+#spring:
+#
+#  datasource:
+#    url: jdbc:oracle:thin:@//8.215.64.144:1521/PDWHDB
+#    username: dwh_prod
+#    password: 2021deweha
+#    user:
+#      url: jdbc:oracle:thin:@//8.215.64.144:1521/PDWHDB
+#      username: dwh_prod
+#      password: 2021deweha
+#      driver-class-name: oracle.jdbc.OracleDriver
+#      ddl-auto: none
+#      jpa:
+#        database-platform: org.hibernate.dialect.OracleDialect
+#      hikari:
+#        connection-timeout: 30000
+#        maximum-pool-size: 10
+#    fds:
+#      url: jdbc:oracle:thin:@//8.215.64.144:1521/PDWHDB
+#      username: dwh_prod
+#      password: 2021deweha
+#      driver-class-name: oracle.jdbc.OracleDriver
+#      ddl-auto: none
+#      jpa:
+#        database-platform: org.hibernate.dialect.OracleDialect
+#      hikari:
+#        connection-timeout: 30000
+#        maximum-pool-size: 10
+#    merchant:
+#      url: jdbc:oracle:thin:@//8.215.64.144:1521/PDWHDB
+#      username: dwh
+#      password: deweha202103
+#      driver-class-name: oracle.jdbc.OracleDriver
+#      ddl-auto: none
+#      jpa:
+#        database-platform: org.hibernate.dialect.OracleDialect
+#      hikari:
+#        connection-timeout: 30000
+#        maximum-pool-size: 10
+#    hikari:
+#      connection-timeout: 30000
+#      maximum-pool-size: 10
+#  main:
+#    allow-circular-references: true
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    open-in-view: false
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        use_sql_comments: true
+#        jdbc:
+#          lob:
+#            non_contextual_creation: true
+#        id:
+#          new_generator_mappings: true
+#  jackson:
+#    serialization:
+#      write-dates-as-timestamps: false
+#    time-zone: Asia/Jakarta
+#  sql:
+#    init:
+#      mode: never
+#      data-locations: classpath:data-local.sql
+#  mail:
+#    host: "smtp.office365.com"
+#    port: 587
+#    username: "no-reply@yokke.co.id"
+#    password: "YokkeOKPunya!@#"
+#    properties:
+#      mail:
+#        smtp:
+#          starttls:
+#            enable: true
+#          ssl:
+#            enable: false
+#          auth: true
+##  data:
+##    redis:
+##      port: 6379
+##      host: localhost
+##  rabbitmq:
+##    host: localhost
+##    port: 5672
+##    username: guest
+##    password: guest
+##    listener:
+##      simple:
+##        retry:
+##          enabled: true
+##          initial-interval: 3s
+##          max-attempts: 5
+##          max-interval: 10s
+##          multiplier: 2
+#error:
+#  handling:
+#    http-status-in-json-response: true
+#    exception-logging: NO_LOGGING
+#    full-stacktrace-http-statuses: 5xx
+#    log-levels:
+#      5xx: ERROR
+#springdoc:
+#  pathsToMatch: /fds/api/**
+#  api-docs:
+#    enabled: true
+#    path: /api-docs
+#    swagger-ui:
+#      path: /swagger-ui.html
+#  show-login-endpoint: true
+#  show-actuator: true
+#jwt:
+#  secret: 0F43ED1E6BB04F27D0E17D6C0825C4A55E256F2A17EB61C54FF0CC440047FD969F67C28517F31349CBE25135130062DE443D4C020F060F61E2236CDF274FEF3C
+#  access-token-expiration: 1440
+#  refresh-token-expiration: 1800
+#logging:
+#  level:
+#    web: debug
+#    org.springframework.security: trace
+#    root: debug
+#app:
+#  base-url: http://localhost:3000
+#  cookie:
+#    domain: localhost
+#    secure: false
+#  scheduler: false
+#  #  reset-password-url: http:///localhost:3000/reset-password
+#  #  setup-password-url: http://localhost:3000/setup-password
+#  reset-password-url: http://8.215.74.217/reset-password
+#  setup-password-url: http://8.215.74.217/setup-password
+#  api:
+#    version: 0.0.1
+#    server:
+#      local:
+#        url: http://localhost:2001
+#      dev:
+#        url: http://8.215.74.217
+#      prod:
+#        url: https://localhost:2001

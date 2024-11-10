@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Team Invitation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 10vh;
+            padding: 20px;
+        }
+
+        .email-container {
+            background-color: white;
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .brand-name {
+            font-weight: 500;
+            font-size: 24px;
+            color: #111827;
+        }
+
+        .content {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: #374151;
+        }
+
+        .accept-button {
+            background-color: #4AD2F5;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 24px 0;
+            transition: background-color 0.2s;
+        }
+
+        .accept-button:hover {
+            background-color: #7C3AED;
+        }
+
+        .footer {
+            font-size: 14px;
+            color: #6B7280;
+            border-top: 1px solid #E5E7EB;
+            padding-top: 32px;
+            margin-top: 32px;
+        }
+
+        .footer p {
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .footer a {
+            color: #8B5CF6;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .email-container {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <div class="header">
+        <div class="brand-name">Fraud Detection System Dashboard</div>
+    </div>
+    <div class="content">
+        <p>Hi</span>,</p>
+        <p style="margin-top: 16px;">
+            <bspan th:text="${senderName}"> </span> has invited you to collaborate on the <strong>Fraud Detection System
+            Dashboard</strong>, with details below
+            </bspan>
+        </p>
+        <br/>
+<p>Username : <span th:text="${recipientName}"></span></p>
+        <p>Email : <span th:text="${recepientEmail}"></span></p>
+        <p>Role : <span th:text="${recepientRole}"></span></p>
+        <br/>
+
+
+        <p>
+
+
+
+            If you wish to join, please click the button below to set up your account.
+        </p>
+    </div>
+    <a class="accept-button" th:href="${verificationLink}">
+        Accept Invitation
+    </a>
+    <div
+            style="margin-top: 16px"
+    ></div>
+    <p
+    >Thank you</p>
+    <div class="footer">
+        <p>PT Mitra Transaksi Indonesia (YOKKE)
+            Millennium Centennial Center, 17th Floor
+            Jl. Jend. Sudirman Kav. 25, Jakarta Selatan 12920
+        </p>
+    </div>
+</div>
+</body>
+</html>

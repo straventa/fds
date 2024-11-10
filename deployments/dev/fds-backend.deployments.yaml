@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fds-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fds-backend
+  template:
+    metadata:
+      labels:
+        app: fds-backend
+    spec:
+      containers:
+        - name: fds-backend
+          image: devharbor.yokke.co.id/fds/fds-be:0.0.2
+          ports:
+            - containerPort: 2001
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: dev
+          resources:
+            requests:
+              cpu: 250m
+              memory: 1Gi
+            limits:
+              cpu: 1000m
+              memory: 3Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fds-backend-service
+spec:
+  type: NodePort
+  selector:
+    app: fds-backend
+  ports:
+    - port: 2001
+      targetPort: 2001
+      nodePort: 30001

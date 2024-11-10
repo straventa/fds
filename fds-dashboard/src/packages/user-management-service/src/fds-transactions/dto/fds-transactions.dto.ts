@@ -1,0 +1,54 @@
+import type { BasePageableDto } from "@/packages/base/src/dto/base-pageable.dto";
+import type { RuleDto } from "@/packages/user-management-service/src/rule/dto/rule.dto";
+import type { UserAccountResponse } from "@/packages/user-management-service/src/user-account/response/user-account.response";
+
+export type FdsTransactionsDto = {
+  authSeqNo: string;
+  cardNo: string;
+  memberBankAcq: string;
+  merchantName: string;
+  mid: string;
+  tid: string;
+  rrn: string;
+  issuer: null | string;
+  authDate: string;
+  authTime: string;
+  authAmount: number;
+  traceNo: string;
+  messageTypeId: string;
+  authSaleType: string;
+  authIntnRspnCd: string;
+  reasonContents: string;
+  installmentCount: number;
+  switchBrand: string | null;
+  posEntryModeDetail: string | null;
+  cardTypeCode: string;
+  onusCode: string;
+  eciValue: null | string;
+  approvalCode: null | string;
+  pgName: string | null;
+  pgType: string | null;
+  issuerMemberNo: null | string;
+  businessType: string;
+  channel: string;
+  issuerCountry: string | null;
+  parameterValues: string;
+  actionType: string;
+  fraudType: string;
+  fraudPodType: string;
+  fraudRemark: string;
+  fraudNote: string;
+  remindNote: string;
+  remindDate: Date | null;
+  assignedDateTime: Date | null;
+  confirmedDateTime: Date | null;
+  fdsTransactionId: string;
+  rule: RuleDto[];
+  fdsTransactionsAudit: any[];
+  confirmedUserAccount: UserAccountResponse | null;
+  assignedUserAccount: UserAccountResponse | null;
+};
+
+export type FdsTransactionsPageableDto = {
+  content: FdsTransactionsDto[];
+} & BasePageableDto;

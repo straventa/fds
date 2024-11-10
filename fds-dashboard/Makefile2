@@ -1,0 +1,37 @@
+pull-fds:
+	@echo "Pulling fds dev image"
+	 docker pull devharbor.yokke.co.id/fds/fds-be:${FDS_TAG}
+stop-fds:
+	@echo "Stop fds dev container"
+	 docker stop fds-be
+	 docker rm fds-be
+run-fds:
+	@echo "Running fds dev container"
+	 docker run -p 2001:2001  --name fds-be -d -t devharbor.yokke.co.id/fds/fds-be:${FDS_TAG}
+restart-fds:
+	@echo "Pulling fds dev image"
+	 docker pull devharbor.yokke.co.id/fds/fds-be:dev
+	@echo "Stop fds dev container"
+	 docker stop fds-be
+	 docker rm fds-be
+	@echo "Running fds dev container"
+	 docker run -p 2001:2001 --network=host  --name fds-be -d -t devharbor.yokke.co.id/fds/fds-be:${FDS_TAG}
+
+pull-fds-fe:
+	@echo "Pulling fds fe dev image"
+	 docker pull devharbor.yokke.co.id/fds/fds-fe:${FDS_TAG}
+stop-fds-fe:
+	@echo "Stop fds fe dev container"
+	 docker stop fds-fe
+	 docker rm fds-fe
+run-fds-fe:
+	@echo "Running fds fe dev container"
+	 docker run -p 3000:3000  --name fds-fe -d -t devharbor.yokke.co.id/fds/fds-fe:${FDS_TAG}
+restart-fds-fe:
+	@echo "Pulling fds fe dev image"
+	 docker pull devharbor.yokke.co.id/fds/fds-fe:dev
+	@echo "Stop fds fe dev container"
+	 docker stop fds-fe
+	 docker rm fds-fe
+	@echo "Running fds fe dev container"
+	 docker run -p 3000:3000  --name fds-fe -d -t devharbor.yokke.co.id/fds/fds-fe:dev
